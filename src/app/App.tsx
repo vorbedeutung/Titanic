@@ -1,33 +1,47 @@
 import React, {
-    useEffect, useRef, useState,
+    useEffect, useState,
 } from 'react';
 import './App.scss';
 import { usePassengersStore } from './store/PassengersStore';
-import Table from './components/Table/Table';
+import { Table } from './components/Table';
+import { SearchForm } from './components/SearchForm';
+
+// Адрес источника данных, видоизменённый для обхода CORS
+const SRC_URL = 'https://raw.githubusercontent.com/altkraft/for-applicants/master/frontend/titanic/passengers.json';
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
-
-    const containerRef = useRef<HTMLDivElement>(null);
+    const [isError, setIsError] = useState(false);
 
     const setAllPassengers = usePassengersStore((state) => state.setAllPassengers);
 
+    // Запрос и установка данных пассажиров
     useEffect(() => {
-        fetch('https://raw.githubusercontent.com/altkraft/for-applicants/master/frontend/titanic/passengers.json')
+        fetch(SRC_URL)
             .then((res) => res.json())
             .then((data) => {
-                setIsLoading(false);
                 setAllPassengers(data);
+            })
+            .catch(() => {
+                setIsError(true);
+            })
+            .finally(() => {
+                setIsLoading(false);
             });
     }, [setAllPassengers]);
 
     return (
-        <div className="container" ref={containerRef}>
+        <div className="container">
             <h1>Titanic Passengers</h1>
-            {isLoading ? (
-                <div className="loading">Loading passenger data...</div>
-            ) : (
-                <Table />
+            {isError && <div className="status">Couldn&apos;t load the passengers data</div>}
+            {isLoading && (
+                <div className="status">Loading passengers data...</div>
+            )}
+            {!isError && !isLoading && (
+                <div className="wrapper">
+                    <SearchForm />
+                    <Table />
+                </div>
             )}
         </div>
     );

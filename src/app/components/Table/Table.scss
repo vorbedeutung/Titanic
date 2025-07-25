@@ -1,54 +1,71 @@
-.table-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    overflow-x: auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-}
 .passengers-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #2a2a3a;
-    overflow: hidden;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2a2a3a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 
-    thead {
-        background-color: #0f3460;
-        color: #ffffff;
+  thead {
+    background: linear-gradient(135deg, #0f3460, #134280);
+    color: #ffffff;
+    
+    th {
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      position: relative;
+
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 25%;
+        height: 50%;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      transition: all 0.2s ease;
+
+      &:nth-child(even) {
+        background-color: #2f2f3f;
+      }
+
+      &:nth-child(odd) {
+        background-color: #2a2a3a;
+      }
+
+      &:hover {
+        background-color: #3a3a4a;
+      }
+
+      td {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #3a3a4a;
+        font-size: 0.95rem;
         
-        th {
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+        &:first-child {
+          font-weight: 500;
+          color: #f8f8f8;
         }
-    }
 
-    tbody {
-        tr {
-            transition: background-color 0.2s;
-
-            &:nth-child(even) {
-                background-color: #2f2f3f;
-            }
-
-            &:nth-child(odd) {
-                background-color: #2a2a3a;
-            }
-
-            &:hover {
-                background-color: #3a3a4a;
-            }
-
-            td {
-                padding: 0.8rem 1rem;
-                border-bottom: 1px solid #3a3a4a;
-                
-                &:first-child {
-                    font-weight: 500;
-                }
-            }
+        &:not(:first-child) {
+          color: #d1d1d1;
         }
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
     }
+  }
 }
 
 @media (max-width: 768px) {

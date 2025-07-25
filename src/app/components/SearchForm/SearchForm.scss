@@ -1,0 +1,151 @@
+.search-form {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(42, 42, 58, 0.8);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  border: 1px solid #3a3a4a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 1200px;
+  color: #e6e6e6;
+
+  .form-group {
+    margin-bottom: 1.2rem;
+
+    .groupLabel {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #f8f8f8;
+      font-size: 0.95rem;
+    }
+
+    .checkboxLabel{
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      justify-content: flex-start;
+      input{
+        cursor: pointer;
+      }
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: #2f2f3f;
+      border: 1px solid #3a3a4a;
+      border-radius: 6px;
+      color: #e6e6e6;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #0f3460;
+        box-shadow: 0 0 0 2px rgba(15, 52, 96, 0.3);
+      }
+
+      &::placeholder {
+        color: #a1a1a1;
+      }
+    }
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 0.9rem;
+      padding: 0.5rem 0.8rem;
+      background: #2f2f3f;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+
+      &:hover {
+        background: #3a3a4a;
+      }
+
+      input[type="radio"] {
+        accent-color: #0f3460;
+      }
+    }
+  }
+
+  .age-range {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    span {
+      color: #a1a1a1;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 70px;
+      text-align: center;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    button {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      flex: 1;
+
+      &:first-child {
+        background: #0f3460;
+        color: white;
+
+        &:hover {
+          background: #134280;
+        }
+      }
+
+      &:last-child {
+        background: #2f2f3f;
+        color: #e6e6e6;
+        border: 1px solid #3a3a4a;
+
+        &:hover {
+          background: #3a3a4a;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+    .search-form {
+    padding: 1.2rem;
+
+    .form-actions {
+      flex-direction: column;
+    }
+  }
+}
+

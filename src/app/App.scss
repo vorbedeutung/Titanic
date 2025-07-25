@@ -6,6 +6,13 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    overflow-x: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
 
 .container {
     min-height: 100vh;
@@ -24,7 +31,7 @@
     }
 }
 
-.loading {
+.status {
     font-size: 1.2rem;
     color: #a1a1a1;
 }
