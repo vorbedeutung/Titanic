@@ -11,6 +11,8 @@ const config: webpack.Configuration = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash:8].js',
+        // Закомментировать при локальном запуске
+        publicPath: '/Titanic/',
     },
     devServer: {
         port: 3000,
